@@ -1,0 +1,66 @@
+<form [formGroup]="formularioLocal" (ngSubmit)="onSubmit()">
+  <div class="form-title">Registrar local</div> <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Cidade</mat-label>
+      <input matInput formControlName="cidade" readonly>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Bairro</mat-label>
+      <mat-select formControlName="bairro" required>
+        <mat-option>-- Nenhum --</mat-option>
+        <mat-option *ngFor="let bairro of bairros" [value]="bairro">{{ bairro }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formularioLocal.get('bairro')?.hasError('required') && formularioLocal.get('bairro')?.touched">
+        Bairro é obrigatório.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rua</mat-label>
+      <input matInput formControlName="rua" required>
+      <mat-error *ngIf="formularioLocal.get('rua')?.hasError('required') && formularioLocal.get('rua')?.touched">
+        Rua é obrigatório.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tipo do local</mat-label>
+      <mat-select formControlName="tipoLocal" required>
+        <mat-option>-- Selecione --</mat-option>
+        <mat-option *ngFor="let tipo of tiposLocal" [value]="tipo">{{ tipo }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="formularioLocal.get('tipoLocal')?.hasError('required') && formularioLocal.get('tipoLocal')?.touched">
+        Tipo do local é obrigatório.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-label>Acessível?</mat-label>
+    <mat-radio-group aria-label="Acessível?" formControlName="acessivel" required class="radio-group">
+      <mat-radio-button [value]="true" class="radio-button">Sim</mat-radio-button>
+      <mat-radio-button [value]="false" class="radio-button">Não</mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="formularioLocal.get('acessivel')?.hasError('required') && formularioLocal.get('acessivel')?.touched">
+      Campo 'Acessível?' é obrigatório.
+    </mat-error>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput formControlName="descricao" rows="3"></textarea>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!formularioLocal.valid">
+    <mat-icon>send</mat-icon> Enviar
+  </button>
+</form>

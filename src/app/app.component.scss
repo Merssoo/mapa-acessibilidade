@@ -1,0 +1,187 @@
+/* Reset básico e altura total para o layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // REMOVIDO: overflow: hidden; do body para permitir scroll no container principal
+}
+
+.app-container {
+  width: 100%;
+  height: 100vh; /* 100% da altura da viewport */
+  display: flex;
+}
+
+/* Sidenav Styles - Como estava no design que você gostou */
+.app-sidenav {
+  width: 250px; /* Largura da barra lateral*/
+  background-color: #1a2245; /* Cor de fundo escura (Material Grey 900)*/
+  color: white;
+  box-shadow: 3px 0 6px #1a2245;
+  display: flex;
+  flex-direction: column;
+
+  .sidenav-header {
+    display: flex;
+    align-items: center;
+    padding: 13.7px;
+    background-color: #1a2245; /* Um pouco mais escuro para o header da sidenav*/
+
+    .app-name {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+  }
+
+  .sidenav-nav-list {
+    flex-grow: 1;
+    padding-top: 8px;
+    background-color: #1a2245;
+    color: white;
+
+    .mat-list-item {
+      color: white;
+
+      mat-icon {
+        margin-right: 10px;
+        color: white !important
+      }
+    }
+  }
+
+  ::ng-deep .mat-mdc-list-item .mdc-list-item__content,
+  ::ng-deep .mat-mdc-list-item .mdc-list-item__primary-text {
+    color: white !important;
+    &:hover {
+        background-color: rgba(0, 4, 255, 0.1);
+      }
+  }
+
+  .my-custom-icon {
+      color: white;
+  }
+
+  ::ng-deep a.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+  color: white !important; // mantém legibilidade
+}
+
+::ng-deep button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+  color: white !important;
+}
+
+
+  .sidenav-bottom-button {
+    padding: 16px;
+    background-color: #1a2245;
+
+    .colaborar-button {
+      width: 100%;
+      background-color: #6200EE;
+      color: white;
+    }
+  }
+}
+
+
+/* Main Content Area */
+.app-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #f0f2f5;
+  position: relative;
+  overflow-y: auto; /* ESTE É CRÍTICO PARA O SCROLL */
+  height: 100%; 
+}
+
+/* Toolbar Styles - Como estava no design que você gostou */
+.app-toolbar {
+  background-color: #1a2245; /* Cor primária do Material Design (azul)*/
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .menu-button {
+    margin-right: 16px;
+  }
+
+  .toolbar-title {
+    font-weight: 500;
+    font-size: 1.25em;
+  }
+
+  .toolbar-spacer {
+    flex: 1 1 auto;
+  }
+
+  .user-profile-button {
+    color: white;
+  }
+}
+
+/* Main content area with map background - Como estava no design que você gostou*/
+.main-content-area {
+  flex-grow: 1;
+  position: relative;
+  overflow: auto; /* Permite scroll se o conteúdo for maior que a tela */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente os cards */
+  align-items: flex-start; /* Alinha os cards ao topo */
+  padding: 30px; /* Mais padding ao redor dos cards */
+  box-sizing: border-box;
+  background-image: none; /* REMOVE A IMAGEM DE FUNDO DO MAPA */
+  filter: none; /* REMOVE QUALQUER FILTRO */
+  background-color: #E0E0E0;
+}
+
+.map-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 830px;
+  background-image: url('/assets/mapa.png'); /* Aponta para a imagem local */
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(10%) brightness(90%); /* Mantenha este filtro para um efeito de mapa de fundo sutil */
+  z-index: 1;
+}
+
+
+.content-cards-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os cards */
+  width: 100%;
+  max-width: 800px; /* Largura máxima para os cards de conteúdo*/
+  padding-top: 18px; /* Adiciona espaçamento no topo dos cards para não colar no header */
+  box-sizing: border-box;
+}
+
+.form-card, .list-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  mat-card-header {
+    padding-bottom: 0;
+  }
+}
+
+/* Floating Action Button */
+.fab-accessibility {
+  position: fixed; /* Mude para 'fixed' para que ele flutue na tela e não role com o conteúdo */
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background-color: #00C853;
+  color: white;
+}

@@ -1,0 +1,23 @@
+<div class="results-list">
+  <div *ngIf="locaisCadastrados.length === 0" class="no-results">
+    <p>Nenhum local cadastrado ainda.</p>
+  </div>
+
+  <mat-card *ngFor="let local of locaisCadastrados" class="result-item-card">
+    <mat-card-content>
+      <div class="item-header">
+        <mat-icon [color]="local.acessivel ? 'accent' : 'warn'">{{ local.acessivel ? 'check_circle' : 'cancel' }}</mat-icon>
+        <span class="item-title">
+          {{ local.bairro }} – {{ local.rua }}
+        </span>
+      </div>
+      <div class="item-details">
+        <span>Tipo: <strong>{{ local.tipoLocal }}</strong></span>
+        <span>Acessível: <strong [style.color]="local.acessivel ? 'green' : 'red'">{{ local.acessivel ? 'Sim' : 'Não' }}</strong></span>
+      </div>
+      <div *ngIf="local.descricao" class="item-description">
+        "{{ local.descricao }}"
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

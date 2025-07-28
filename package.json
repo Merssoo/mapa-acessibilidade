@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --output-path=public --base-href=/",
+    "build": "ng build --output-path=public --base-href=/mapa-acessibilidade/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

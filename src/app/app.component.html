@@ -7,6 +7,9 @@
     <mat-divider></mat-divider>
 
     <mat-nav-list class="sidenav-nav-list">
+      <a mat-list-item routerLink="/home" (click)="isHandset ? sidenav.close() : null">
+        <mat-icon class="my-custom-icon">home</mat-icon> Home
+      </a>
       <a mat-list-item routerLink="/dashboard" matTooltip="Funcionalidade temporariamente indisponível" [class.disabled]="true">
         <mat-icon class="my-custom-icon">dashboard</mat-icon> Dashboard
       </a>

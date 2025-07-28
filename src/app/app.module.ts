@@ -21,13 +21,20 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { FormularioLocalComponent } from './formulario-local/formulario-local.component'; // Vamos criar
 import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
+import { HomeComponent } from './home/home.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { ContribuirComponent } from './contribuir/contribuir.component';
+import { LocaisComponent } from './locais/locais.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioLocalComponent, // Declare o componente do formulário aqui
-    ListaLocaisComponent      // Declare o componente da lista aqui
+    ListaLocaisComponent, 
+    HomeComponent,
+    ContribuirComponent,
+    LocaisComponent // Declare o componente da lista aqui
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,8 @@ import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
     MatSelectModule,
     MatRadioModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

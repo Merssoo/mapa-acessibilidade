@@ -1,0 +1,39 @@
+
+
+/* Conteúdo por cima do mapa */
+.main-content-area {
+  position: relative;
+  overflow: auto;      
+  display: flex;       
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px;
+  box-sizing: border-box;            /* Estica do topo ao rodapé */
+  background-image: url('/assets/mapa.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+/* Cards brancos com sombra */
+.content-cards-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  padding-top: 70px;
+  box-sizing: border-box;
+}
+
+.form-card,
+.list-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+

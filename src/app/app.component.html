@@ -1,90 +1,67 @@
 <mat-sidenav-container class="app-container">
-  <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
+  <mat-sidenav #sidenav [mode]="isHandset ? 'over' : 'side'" class="app-sidenav">
     <div class="sidenav-header">
-      <span class="app-name">MAPA ACESSIBILIDADE</span>
+      <a routerLink="/home" class="app-name clickable">MAPA ACESSIBILIDADE</a>
     </div>
+
     <mat-divider></mat-divider>
+
     <mat-nav-list class="sidenav-nav-list">
-      <a mat-list-item routerLink="/dashboard" 
-        matTooltip="Funcionalidade temporariamente indisponível" 
-        [class.disabled]="true">
+      <a mat-list-item routerLink="/dashboard" matTooltip="Funcionalidade temporariamente indisponível" [class.disabled]="true">
         <mat-icon class="my-custom-icon">dashboard</mat-icon> Dashboard
       </a>
-      <a mat-list-item routerLink="/contribuir">
+      <a mat-list-item routerLink="/contribuir" (click)="isHandset ? sidenav.close() : null">
         <mat-icon class="my-custom-icon">add_location_alt</mat-icon> Contribuir
       </a>
-      <a mat-list-item routerLink="/locais">
+      <a mat-list-item routerLink="/locais" (click)="isHandset ? sidenav.close() : null">
         <mat-icon class="my-custom-icon">list_alt</mat-icon> Locais Cadastrados
       </a>
+
       <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/sobre"
-        matTooltip="Funcionalidade temporariamente indisponível" 
-        [class.disabled]="true">
+
+      <a mat-list-item routerLink="/sobre" matTooltip="Funcionalidade temporariamente indisponível" [class.disabled]="true">
         <mat-icon class="my-custom-icon">info</mat-icon> Sobre
       </a>
     </mat-nav-list>
 
     <div class="sidenav-bottom-button" matTooltip="Funcionalidade temporariamente indisponível">
-      <button mat-flat-button color="accent" class="colaborar-button" 
-         [class.disabled]="true">
+      <button mat-flat-button color="accent" class="colaborar-button" [class.disabled]="true">
         <mat-icon>help</mat-icon> Ajuda
       </button>
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content class="app-content">
+    <!-- ⚠️ Toolbar com botão do menu que mantém visibilidade -->
     <mat-toolbar color="primary" class="app-toolbar">
       <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
         <mat-icon>menu</mat-icon>
       </button>
+
       <span class="toolbar-spacer"></span>
+
       <div matTooltip="Funcionalidade temporariamente indisponível">
         <button mat-icon-button disabled>
           <mat-icon style="color: rgba(255,255,255,0.6)">search</mat-icon>
         </button>
       </div>
-      <div matTooltip="Funcionalidade temporariamente indisponível" >
+
+      <div matTooltip="Funcionalidade temporariamente indisponível">
         <button mat-icon-button disabled>
           <mat-icon style="color: rgba(255,255,255,0.6)">notifications</mat-icon>
         </button>
       </div>
+
       <div matTooltip="Funcionalidade temporariamente indisponível">
         <button mat-button class="user-profile-button" disabled>
-          <mat-icon style="color: rgba(255,255,255,0.6)">person</mat-icon> 
+          <mat-icon style="color: rgba(255,255,255,0.6)">person</mat-icon>
           <span style="color: rgba(255,255,255,0.6)">Usuário</span>
           <mat-icon style="color: rgba(255,255,255,0.6)">arrow_drop_down</mat-icon>
         </button>
       </div>
     </mat-toolbar>
 
-    <div class="main-content-area">
-      <div class="map-background">
-        </div>
-
-      <div class="content-cards-container">
-        <mat-card class="form-card">
-          <mat-card-header>
-            <mat-card-title></mat-card-title>
-            <mat-card-subtitle></mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <app-formulario-local></app-formulario-local>
-          </mat-card-content>
-        </mat-card>
-
-        <mat-card class="list-card">
-          <mat-card-header>
-            <mat-card-title>Resultados Enviados</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <app-lista-locais></app-lista-locais>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-
-    <button mat-fab color="accent" class="fab-accessibility">
-      <mat-icon>accessibility</mat-icon>
-    </button>
+    <!-- Área dinâmica de conteúdo -->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

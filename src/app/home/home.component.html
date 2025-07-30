@@ -17,7 +17,11 @@
         <mat-card-title>Resultados Enviados</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-lista-locais></app-lista-locais>
+        <app-lista-locais
+        [limit]="3" 
+        [offset]="0" 
+        [showPaginator]="false">
+      </app-lista-locais>
       </mat-card-content>
     </mat-card>
   </div>

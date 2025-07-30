@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ViewChild, AfterViewInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,9 @@ export class AppComponent implements AfterViewInit{
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isHandset = false;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit() {
     this.breakpointObserver.observe([Breakpoints.Handset])
@@ -24,6 +27,7 @@ export class AppComponent implements AfterViewInit{
         } else {
           this.sidenav.open();
         }
+        this.cdr.detectChanges();
       });
   }
 }

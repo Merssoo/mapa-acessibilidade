@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LocalService } from '../services/local/local.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-formulario-local',
@@ -13,8 +16,9 @@ export class FormularioLocalComponent implements OnInit {
     'Centro', 'Pio Corrêa', 'Pinheirinho', 'Michel', 'Comerciário',
     // Adicione mais bairros de Criciúma aqui ou carregue do backend
   ];
+  isLoading = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private localService: LocalService, private snackBar: MatSnackBar) {
     this.formularioLocal = this.fb.group({
       cidade: [{ value: 'Criciúma - SC', disabled: true }],
       bairro: ['', Validators.required],
@@ -30,11 +34,33 @@ export class FormularioLocalComponent implements OnInit {
 
   onSubmit() {
     if (this.formularioLocal.valid) {
-      console.log('Dados do formulário:', this.formularioLocal.value);
-      // Aqui você fará a chamada para o seu backend (POST /locais)
-    } else {
-      this.formularioLocal.markAllAsTouched(); // Marcar para exibir erros
-      alert('Por favor, preencha todos os campos obrigatórios.');
-    }
+    const dados = this.formularioLocal.getRawValue();
+    this.isLoading = true;
+
+    this.localService.registrarLocal(dados).subscribe({
+      next: (resposta) => {
+        this.isLoading = false;
+        this.snackBar.open('Local registrado com sucesso!', 'Fechar', {
+          duration: 3000,
+          verticalPosition: 'top'
+        });
+        this.formularioLocal.reset({ cidade: 'Criciúma - SC' });
+      },
+      error: (erro) => {
+        this.isLoading = false;
+        this.snackBar.open('Erro ao registrar o local. Tente novamente.', 'Fechar', {
+          duration: 4000,
+          verticalPosition: 'top'
+        });
+      }
+    });
+
+  } else {
+    this.formularioLocal.markAllAsTouched();
+    this.snackBar.open('Preencha todos os campos obrigatórios.', 'Fechar', {
+      duration: 4000,
+      verticalPosition: 'top'
+    });
+  }
   }
 }

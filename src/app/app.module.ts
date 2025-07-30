@@ -25,6 +25,11 @@ import { HomeComponent } from './home/home.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ContribuirComponent } from './contribuir/contribuir.component';
 import { LocaisComponent } from './locais/locais.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -53,7 +58,11 @@ import { LocaisComponent } from './locais/locais.component';
     MatRadioModule,
     MatDividerModule,
     MatTooltipModule,
-    LayoutModule
+    LayoutModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -60,7 +60,9 @@
     </mat-form-field>
   </div>
 
-  <button mat-raised-button color="primary" type="submit" [disabled]="!formularioLocal.valid">
-    <mat-icon>send</mat-icon> Enviar
+  <button mat-raised-button color="primary" type="submit" [disabled]="!formularioLocal.valid || isLoading">
+    <mat-icon *ngIf="!isLoading">send</mat-icon>
+    <mat-progress-spinner *ngIf="isLoading" diameter="20" mode="indeterminate"></mat-progress-spinner>
+    Enviar
   </button>
 </form>

@@ -1,4 +1,7 @@
-<div class="results-list">
+<div *ngIf="isLoading" class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="results-list" *ngIf="!isLoading">
   <div *ngIf="locaisCadastrados.length === 0" class="no-results">
     <p>Nenhum local cadastrado ainda.</p>
   </div>
@@ -20,4 +23,12 @@
       </div>
     </mat-card-content>
   </mat-card>
+  <mat-paginator
+    *ngIf="showPaginator"
+    [length]="totalItens"
+    [pageIndex]="pageIndex"
+    [pageSize]="limit"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChange($event)">
+  </mat-paginator>
 </div>

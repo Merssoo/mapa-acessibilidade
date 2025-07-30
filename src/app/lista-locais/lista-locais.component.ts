@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { LocalService } from 'src/app/services/local/local.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface Local {
   bairro: string;
@@ -13,15 +16,54 @@ interface Local {
   templateUrl: './lista-locais.component.html',
   styleUrls: ['./lista-locais.component.scss']
 })
-export class ListaLocaisComponent implements OnInit {
-  locaisCadastrados: Local[] = [
-    { bairro: 'Pio Corrêa', rua: 'Rua da Paz', tipoLocal: 'Calçada', acessivel: false, descricao: 'Não tem rampa nem piso tátil' },
-    { bairro: 'Centro', rua: 'Rua João Pessoa', tipoLocal: 'Banheiro adaptado', acessivel: true, descricao: '' }
-    // Mais locais serão adicionados aqui
-  ];
+export class ListaLocaisComponent implements OnInit, OnChanges {
+  @Input() limit = 5;                    // Número de itens por página
+  @Input() offset = 0;                  // Posição inicial
+  @Input() showPaginator = true;        // Se false, esconde paginador
+  @Input() pageSizeOptions = [5, 10, 20];
 
-  constructor() { }
+  locaisCadastrados: Local[] = [];
+  totalItens = 0;
+  pageIndex = 0;
+  isLoading = false;
+
+  constructor(private localService: LocalService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
+    this.loadLocais();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['limit'] || changes['offset']) {
+      this.loadLocais();
+    }
+  }
+
+  loadLocais(): void {
+    this.isLoading = true;
+    const atualOffset = this.offset ?? this.pageIndex * this.limit;
+
+    this.localService.getLocais(this.limit, atualOffset)
+      .subscribe({
+        next: (data) => {
+          this.locaisCadastrados = data.items;
+          this.totalItens = data.total;
+          this.isLoading = false;
+        },
+        error: (error) => {
+          this.snackBar.open('Erro ao carregar locais. Tente novamente.', 'Fechar', {
+            duration: 4000,
+            verticalPosition: 'top'
+          });
+          this.isLoading = false;
+        }
+      });
+  }
+
+  onPageChange(event: PageEvent): void {
+    this.limit = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.offset = this.pageIndex * this.limit;
+    this.loadLocais();
   }
 }

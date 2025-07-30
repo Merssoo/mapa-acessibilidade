@@ -17,6 +17,8 @@ jobs:
         run: npm install
       - name: Build Angular app
         run: npm run build -- --output-path=public --base-href=/mapa-acessibilidade/
+      - name: Create 404.html for SPA routing
+        run: cp public/index.html public/404.html
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

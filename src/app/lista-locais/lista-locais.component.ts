@@ -46,8 +46,8 @@ export class ListaLocaisComponent implements OnInit, OnChanges {
     this.localService.getLocais(this.limit, atualOffset)
       .subscribe({
         next: (data) => {
-          this.locaisCadastrados = data.items;
-          this.totalItens = data.total;
+          this.locaisCadastrados = data.content;
+          this.totalItens = data.totalElements;
           this.isLoading = false;
         },
         error: (error) => {

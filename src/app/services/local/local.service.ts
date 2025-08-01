@@ -19,12 +19,12 @@ export class LocalService {
 
   constructor(private http: HttpClient) {}
 
-  getLocais(limit: number, offset: number): Observable<{ items: Local[], total: number }> {
+  getLocais(limit: number, offset: number): Observable<{ content: Local[], totalElements: number }> {
     const params = new HttpParams()
       .set('limit', limit.toString())
       .set('offset', offset.toString());
 
-    return this.http.get<{ items: Local[], total: number }>(this.apiUrl, { params });
+    return this.http.get<{ content: Local[], totalElements: number }>(this.apiUrl, { params });
   }
 
   registrarLocal(dados: any): Observable<any> {

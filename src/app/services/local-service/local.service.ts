@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiService } from '../api.service';
+import { HttpParams } from '@angular/common/http';
 
 export interface Local {
   bairro: string;
@@ -15,19 +16,17 @@ export interface Local {
 })
 export class LocalService {
 
-  private apiUrl = 'https://seu-backend.com/api/locais'; // Altere para o URL real
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: ApiService) {}
 
   getLocais(limit: number, offset: number): Observable<{ content: Local[], totalElements: number }> {
     const params = new HttpParams()
       .set('limit', limit.toString())
       .set('offset', offset.toString());
 
-    return this.http.get<{ content: Local[], totalElements: number }>(this.apiUrl, { params });
+    return this.http.get<{ content: Local[], totalElements: number }>('/locais', { params });
   }
 
   registrarLocal(dados: any): Observable<any> {
-    return this.http.post(this.apiUrl, dados);
+    return this.http.post('/locais', dados);
   }
 }

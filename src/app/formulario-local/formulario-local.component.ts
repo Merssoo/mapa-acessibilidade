@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LocalService } from '../services/local/local.service';
+import { LocalService } from '../services/local-service/local.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 

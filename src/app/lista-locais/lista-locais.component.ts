@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { LocalService } from 'src/app/services/local/local.service';
+import { LocalService } from 'src/app/services/local-service/local.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface Local {

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8080/mapa-acessibilidade/api'
+  apiBaseUrl: 'https://mapa-acessibilidade-api-production.up.railway.app'
 };

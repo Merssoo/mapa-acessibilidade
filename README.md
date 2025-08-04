@@ -1,27 +1,21 @@
-# MapaAcessibilidadeFrontV16
+# MapaAcessibilidade
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+## 📍 Sobre o projeto
 
-## Development server
+**MapaAcessibilidade** é uma aplicação web desenvolvida para facilitar a verificação e o cadastro de locais com acessibilidade (ou falta dela) no município de Criciúma, Santa Catarina.  
+O objetivo é promover a inclusão e fornecer informações úteis para pessoas com deficiência ou mobilidade reduzida.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tecnologias utilizadas
 
-## Code scaffolding
+- [Angular 16](https://angular.io/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 💻 Como executar o projeto localmente
 
-## Build
+Certifique-se de ter o Node.js e Angular CLI instalados na sua máquina.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+# Instale as dependências (caso ainda não tenha feito isso)
+npm install
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Execute o projeto
+ng serve -o

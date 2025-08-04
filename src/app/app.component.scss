@@ -1,23 +1,20 @@
-/* Reset básico e altura total para o layout */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #E0E0E0;
-  // REMOVIDO: overflow: hidden; do body para permitir scroll no container principal
 }
 
 .app-container {
   width: 100%;
-  height: 100vh; /* 100% da altura da viewport */
+  height: 100vh;
   display: flex;
 }
 
-/* Sidenav Styles - Como estava no design que você gostou */
 .app-sidenav {
-  width: 250px; /* Largura da barra lateral*/
-  background-color: #1a2245; /* Cor de fundo escura (Material Grey 900)*/
+  width: 250px;
+  background-color: #1a2245;
   color: white;
   box-shadow: 3px 0 6px #1a2245;
   display: flex;
@@ -27,7 +24,7 @@ html, body {
     display: flex;
     align-items: center;
     padding: 13.7px;
-    background-color: #1a2245; /* Um pouco mais escuro para o header da sidenav*/
+    background-color: #1a2245;
 
     .app-name {
       font-size: 1.2em;
@@ -52,19 +49,16 @@ html, body {
     }
   }
 
-  // Estilo geral para todos os mat-list-item
   ::ng-deep .mat-mdc-list-item .mdc-list-item__content,
   ::ng-deep .mat-mdc-list-item .mdc-list-item__primary-text {
     color: white !important;
   }
 
-  // Hover só para itens não desativados
   ::ng-deep .mat-mdc-list-item:not(.disabled):hover .mdc-list-item__content {
     background-color: rgba(255, 255, 255, 0.1);
     transition: background-color 0.3s ease;
     border-radius: 4px;
   }
-
 
   .my-custom-icon {
       color: white;
@@ -74,7 +68,7 @@ html, body {
   pointer-events: none;
   opacity: 0.5;
   cursor: default;
-  color: white !important; // mantém legibilidade
+  color: white !important;
 }
 
 ::ng-deep button.disabled {
@@ -97,25 +91,22 @@ html, body {
   }
 }
 
-
-/* Main Content Area */
 .app-content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   background-color: #f0f2f5;
   position: relative;
-  overflow-y: auto; /* ESTE É CRÍTICO PARA O SCROLL */
+  overflow-y: auto;
   height: 100%; 
 }
 
-/* Toolbar Styles - Como estava no design que você gostou */
 .app-toolbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 50px; /* padrão do Angular Material */
+  height: 50px;
   z-index: 100;
   background-color: #1a2245;
   display: flex;
@@ -151,10 +142,3 @@ html, body {
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
-
-/* Main content area with map background - Como estava no design que você gostou*/
-
-
-
-
-

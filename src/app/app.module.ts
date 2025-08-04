@@ -16,10 +16,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { FormularioLocalComponent } from './formulario-local/formulario-local.component'; // Vamos criar
+import { FormularioLocalComponent } from './formulario-local/formulario-local.component';
 import { ListaLocaisComponent } from './lista-locais/lista-locais.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -29,17 +29,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormularioLocalComponent, // Declare o componente do formulário aqui
+    FormularioLocalComponent,
     ListaLocaisComponent, 
     HomeComponent,
     ContribuirComponent,
-    LocaisComponent // Declare o componente da lista aqui
+    LocaisComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatPaginatorModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

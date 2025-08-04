@@ -17,9 +17,9 @@ interface Local {
   styleUrls: ['./lista-locais.component.scss']
 })
 export class ListaLocaisComponent implements OnInit, OnChanges {
-  @Input() limit = 5;                    // Número de itens por página
-  @Input() offset = 0;                  // Posição inicial
-  @Input() showPaginator = true;        // Se false, esconde paginador
+  @Input() limit = 5;                    
+  @Input() offset = 0;                  
+  @Input() showPaginator = true;       
   @Input() pageSizeOptions = [5, 10, 20];
 
   locaisCadastrados: Local[] = [];

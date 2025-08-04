@@ -17,7 +17,7 @@
         <mat-icon class="my-custom-icon">add_location_alt</mat-icon> Contribuir
       </a>
       <a mat-list-item routerLink="/locais" (click)="isHandset ? sidenav.close() : null">
-        <mat-icon class="my-custom-icon">list_alt</mat-icon> Locais Cadastrados
+        <mat-icon class="my-custom-icon">list_alt</mat-icon> Locais
       </a>
 
       <mat-divider></mat-divider>
@@ -35,7 +35,6 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="app-content">
-    <!-- ⚠️ Toolbar com botão do menu que mantém visibilidade -->
     <mat-toolbar color="primary" class="app-toolbar">
       <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
         <mat-icon>menu</mat-icon>
@@ -64,7 +63,6 @@
       </div>
     </mat-toolbar>
 
-    <!-- Área dinâmica de conteúdo -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

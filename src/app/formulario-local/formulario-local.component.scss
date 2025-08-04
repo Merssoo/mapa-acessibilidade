@@ -1,27 +1,18 @@
-/* Adicione ou modifique este bloco no seu formulario-local.component.scss */
-
-// Se você ainda tem o mat-card pai, pode manter o estilo para ele
-// mat-card {
-//   margin-bottom: 20px; // Espaço abaixo do card, se estiver em uma lista de cards
-// }
-
-// *** NOVO ESTILO PARA A DIV "Registrar Local" ***
-.form-title { // Adicione esta classe à div do seu HTML: <div class="form-title">Registrar local</div>
-  font-size: 1.5em; /* Tamanho do título */
-  font-weight: 500; /* Pode adicionar um peso para destaque */
-  margin-bottom: 20px; /* Espaço abaixo do título "Registrar Local" */
-  color: rgba(0, 0, 0, 0.87); /* Cor do texto (Material Design primary text) */
+.form-title { 
+  font-size: 1.5em; 
+  font-weight: 500; 
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.87);
 }
 
-// Seus outros estilos de formulário existentes (mantenha-os):
 form {
   display: flex;
   flex-direction: column;
-  padding: 20px; /* Adiciona um padding interno ao formulário, separando do card ou borda */
+  padding: 20px;
 }
 
 .form-row {
-  margin-bottom: 10px; /* Espaçamento entre as linhas do formulário */
+  margin-bottom: 10px;
 }
 
 .full-width {
@@ -43,17 +34,3 @@ button[type="submit"] {
   margin-top: 20px;
   width: 100%;
 }
-
-// Remova ou ajuste as regras antigas de mat-card-header, mat-card-title, mat-card-subtitle,
-// pois o HTML não as usa mais para o título "Registrar Local".
-// Exemplo de como remover/comentar:
-/*
-mat-card-header {
-  // padding-bottom: 20px;
-  // .mat-card-title { ... }
-  // mat-card-subtitle { ... }
-}
-mat-card-content {
-  // padding-top: 0 !important;
-}
-*/
